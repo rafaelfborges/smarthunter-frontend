@@ -10,8 +10,11 @@ export default function Courses() {
 
   useEffect(() => {
     async function loadCourses() {
-      const courses = await findAll();
-      setCourses(courses.data.content);
+      const {
+        data: { content: courses },
+      } = await findAll();
+
+      setCourses(courses);
       setLoading(false);
     }
 
