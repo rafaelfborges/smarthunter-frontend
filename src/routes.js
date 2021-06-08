@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import PrivateRoute from "./components/PrivateRoute";
 
-import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Courses from "./pages/Courses";
@@ -13,8 +12,7 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        <PrivateRoute path="/" component={Home} exact />
-        <PrivateRoute path="/courses" component={Courses} exact />
+        <PrivateRoute path="/" component={Courses} exact />
         <PrivateRoute
           path="/enrolled_courses"
           component={EnrolledCourses}
