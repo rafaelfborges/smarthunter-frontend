@@ -9,16 +9,14 @@ export default function Courses() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadCourses() {
-      const {
-        data: { content: courses },
-      } = await findAll();
+    (async () => {
+        const {
+          data: { content: courses },
+        } = await findAll();
 
-      setCourses(courses);
-      setLoading(false);
-    }
-
-    loadCourses();
+        setCourses(courses);
+        setLoading(false);
+    })()
   }, []);
 
   return loading ? (
