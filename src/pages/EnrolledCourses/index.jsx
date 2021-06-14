@@ -9,16 +9,11 @@ export default function EnrolledCourses() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadEnrolledCourses() {
-      const {
-        data: { enrolledCourses },
-      } = await findById(1);
-
+    (async () => {
+      const { enrolledCourses } = await findById(1);
       setEnrolledCourses(enrolledCourses);
       setLoading(false);
-    }
-
-    loadEnrolledCourses();
+    })()
   }, []);
 
   return loading ? (

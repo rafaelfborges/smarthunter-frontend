@@ -1,23 +1,28 @@
 import api from "./api";
 
 const findAll = async () => {
-  return await api.get("users");
+  const { data: response } = await api.get("users");
+  return response;
 };
 
 const create = async (user) => {
-  return await api.post("users", user);
+  const { data: response } = await api.post("users", user);
+  return response;
 };
 
 const findById = async (id) => {
-  return await api.get(`users/${id}`);
+  const { data: response } = await api.get(`users/${id}`);
+  return response;
 };
 
 const updateById = async (id, user) => {
-  return await api.put(`users/${id}`, user);
+  const { data: response } = await api.put(`users/${id}`, user);
+  return response;
 };
 
 const remove = async (id) => {
-  return await api.delete(`users/${id}`);
+  const { data: response } = await api.delete(`users/${id}`);
+  return response;
 };
 
 export { findAll, create, findById, updateById, remove };
