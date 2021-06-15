@@ -1,28 +1,28 @@
 import api from "./api";
 
-const findAll = async () => {
+const findAllCourses = async () => {
   const { data: response } = await api.get("courses");
   return response;
 };
 
-const create = async (course) => {
+const createCourse = async (course) => {
   const { data: response } = await api.post("courses", course);
   return response;
 };
 
-const findById = async (id) => {
+const findCourseById = async (id) => {
   const { data: response } = await api.get(`courses/${id}`); 
   return response;
 };
 
-const updateById = async (id, course) => {
+const updateCourseById = async (id, course) => {
   const { data: response } = await api.put(`courses/${id}`, course); 
   return response;
 };
 
-const remove = async (id) => {
+const removeCourse = async (id) => {
   const { data: response } = await api.delete(`courses/${id}`);
   return response
 };
 
-export { findAll, create, findById, updateById, remove };
+export { findAllCourses, createCourse, findCourseById, updateCourseById, removeCourse };

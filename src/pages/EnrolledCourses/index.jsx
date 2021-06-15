@@ -1,26 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import {Button, Card, CardDeck, Col, Container, Row} from "react-bootstrap";
 
-import Loading from "../../components/Loading";
-import { findById } from "../../services/UsersDAO";
+import { findUserById } from "../../services/UsersDAO";
+import { findCourseById } from "../../services/CoursesDAO";
 
 export default function EnrolledCourses() {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      const { enrolledCourses } = await findById(1);
-      setEnrolledCourses(enrolledCourses);
-      setLoading(false);
+      const { enrolledCourses } = await findUserById(1);
+      
+      const courses = await Promise.all(enrolledCourses.map(async ({ course }) => {
+        return await findCourseById(course.id);
+      }));
+      
+      setEnrolledCourses(courses);
+      //setLoading(false);
     })()
   }, []);
 
-  return loading ? (
-    <Loading />
-  ) : (
-    <Container className="mt-4" fluid>
-      <h1>{console.log(enrolledCourses)}</h1>
+  return  (
+    <Container className="mt-2 mb-2">
+      <Row>
+        {enrolledCourses.map((course) => (
+          <Col key={course.id} className="mt-2 mb-2 ml-2">
+            <CardDeck>
+              <Card style={{ minWidth: '18rem', maxWidth: '27rem' }} key={course.id}>
+                <Card.Img variant="top" src={course.thumbUrl} />
+                <Card.Body>
+                  <Card.Title>{course.name}</Card.Title>
+                  <Card.Text>{course.description}</Card.Text>
+                  <Button variant="primary">Assistir</Button>
+                </Card.Body>
+              </Card>
+            </CardDeck>
+          </Col>
+        ))}
+      </Row>
     </Container>
   );
 }
