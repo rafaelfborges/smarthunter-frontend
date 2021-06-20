@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Card, CardDeck, Col, Container, Row} from "react-bootstrap";
 
-import { findAllCourses } from "../../services/CourseService";
+import {findAllCourses} from "../../services/CourseService";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     (async () => {
-        const { content: courses } = await findAllCourses();
-        setCourses(courses);
-        //setLoading(false);
+      const {content: courses} = await findAllCourses();
+      setCourses(courses);
+      //setLoading(false);
     })()
   }, []);
 
@@ -20,8 +20,8 @@ export default function Courses() {
         {courses.map((course) => (
           <Col key={course.id} className="mt-2 mb-2 ml-2">
             <CardDeck>
-              <Card style={{ minWidth: '18rem', maxWidth: '27rem' }} key={course.id}>
-                <Card.Img variant="top" src={course.thumbUrl} />
+              <Card style={{minWidth: '18rem', maxWidth: '27rem'}} key={course.id}>
+                <Card.Img variant="top" src={course.thumbUrl}/>
                 <Card.Body>
                   <Card.Title>{course.name}</Card.Title>
                   <Card.Text>{course.description}</Card.Text>

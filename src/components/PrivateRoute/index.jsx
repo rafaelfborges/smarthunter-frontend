@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 
 import NavBar from "../NavBar";
 
-export default function PrivateRoute({ component: Component, ...rest }) {
+export default function PrivateRoute({component: Component, ...rest}) {
   const isLogin = true;
 
   return (
@@ -12,11 +12,11 @@ export default function PrivateRoute({ component: Component, ...rest }) {
       render={(props) => {
         return isLogin ? (
           <>
-            <NavBar />
+            <NavBar/>
             <Component {...props} />
           </>
         ) : (
-          <Redirect to="/login" />
+          <Redirect to="/login"/>
         );
       }}
     />

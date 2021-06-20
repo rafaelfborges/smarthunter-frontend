@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Container, Image } from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {Container, Image} from "react-bootstrap";
 
 import Error from "../../assets/images/404.png";
 
@@ -11,7 +11,7 @@ export default function PageNotFound() {
       fluid
     >
       <div className="text-center mt-5">
-        <Image src={Error} className="error-static" />
+        <Image src={Error} className="error-static"/>
         <h5 className="mt-5">
           Algo está errado! <Link to="/">Volte clicando aqui.</Link>
         </h5>
