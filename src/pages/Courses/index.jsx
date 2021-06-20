@@ -1,20 +1,26 @@
 import React, {useEffect, useState} from "react";
 import {Button, Card, CardDeck, Col, Container, Row} from "react-bootstrap";
 
+import Loading from "../../components/Loading"
+
 import {findAllCourses} from "../../services/CourseService";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const {content: courses} = await findAllCourses();
       setCourses(courses);
-      //setLoading(false);
+      setLoading(false);
     })()
   }, []);
-
-  return (
+  
+  return loading ? (
+    <Loading />
+  ) : (
     <Container className="mt-2 mb-2">
       <Row>
         {courses.map((course) => (

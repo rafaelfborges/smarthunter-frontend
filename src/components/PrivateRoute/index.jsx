@@ -1,16 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Redirect, Route} from "react-router-dom";
+import {AuthContext} from "../../contexts/AuthContext";
 
 import NavBar from "../NavBar";
 
+
 export default function PrivateRoute({component: Component, ...rest}) {
-  const isLogin = true;
+  const { authenticated } = useContext(AuthContext);
 
   return (
     <Route
       {...rest}
       render={(props) => {
-        return isLogin ? (
+        return authenticated ? (
           <>
             <NavBar/>
             <Component {...props} />
