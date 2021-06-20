@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Button, Card, CardDeck, Col, Container, Row} from "react-bootstrap";
 
-import { findAllCourses } from "../../services/CoursesDAO";
+import { findAllCourses } from "../../services/CourseService";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);

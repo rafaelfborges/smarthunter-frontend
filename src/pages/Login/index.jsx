@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+/*import {useRef, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
 import {Container, Col, Row, Alert, Button, Card, Form} from "react-bootstrap";
 import Logo from "../../assets/images/logo.png";
@@ -49,5 +49,5 @@ export default function Login() {
       </Row>
       
     </Container>
-  );
-}
+  )
+}*/

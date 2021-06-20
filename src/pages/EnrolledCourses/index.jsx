@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {Button, Card, CardDeck, Col, Container, Row} from "react-bootstrap";
 
-import { findUserById } from "../../services/UsersDAO";
-import { findCourseById } from "../../services/CoursesDAO";
+import { findUserById } from "../../services/UserService";
+import { findCourseById } from "../../services/CourseService";
 
 export default function EnrolledCourses() {
   const [enrolledCourses, setEnrolledCourses] = useState([]);

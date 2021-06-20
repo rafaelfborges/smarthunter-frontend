@@ -1,7 +1,8 @@
-import React, {useRef, useState} from 'react';
+/*import React, {useRef, useState} from 'react';
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
-import {create} from "../../services/UsersDAO";
+
+import { createUser } from "../../services/UsersDAO";
 import Logo from "../../assets/images/logo.png";
 
 export default function Signup() {
@@ -15,7 +16,7 @@ export default function Signup() {
     e.preventDefault();
     try{
       setLoading(true);
-      const response = await create({
+      const response = await createUser({
         name: nameRef.current.value,
         email: emailRef.current.value,
         password: passwordRef.current.value
@@ -69,4 +70,4 @@ export default function Signup() {
 
     </Container>
   );
-}
+}*/
