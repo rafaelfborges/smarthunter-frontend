@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import {Button, Form, FormControl, Nav, Navbar, NavDropdown,} from "react-bootstrap";
+
+import {AuthContext} from "../../contexts/AuthContext";
 
 import Logo from "../../assets/images/logo.png";
 
 export default function NavBar() {
+  const { handleLogout, logguedUser } = useContext(AuthContext)
+  
   return (
     <Navbar expand="lg">
       <Navbar.Brand as={Link} to="/">
@@ -21,7 +25,7 @@ export default function NavBar() {
           <Nav.Link as={Link} to="/">
             Cursos
           </Nav.Link>
-          <Nav.Link as={Link} to="/enrolled_courses">
+          <Nav.Link as={Link} to="/my-courses">
             Meus Cursos
           </Nav.Link>
         </Nav>
@@ -34,10 +38,10 @@ export default function NavBar() {
           <Button variant="outline-success">Buscar</Button>
         </Form>
         <Nav className="mr-5 ml-4">
-          <NavDropdown title="$UserName" id="basic-nav-dropdown">
+          <NavDropdown title={logguedUser.username} id="basic-nav-dropdown">
             <NavDropdown.Item href="#a1">Meu Perfil</NavDropdown.Item>
             <NavDropdown.Divider/>
-            <NavDropdown.Item href="#a2">Sair</NavDropdown.Item>
+            <NavDropdown.Item href="#logout" onClick={handleLogout}>Sair</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

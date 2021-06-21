@@ -1,4 +1,4 @@
-import {useContext, useRef, useState} from "react";
+import React, {useContext, useRef, useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
 import { Alert, Button, Card, Form } from "react-bootstrap";
@@ -9,7 +9,7 @@ import {AuthContext} from "../../contexts/AuthContext";
 import Logo from "../../assets/images/logo.png";
 
 export default function Login() {
-  const { handleLogin } = useContext(AuthContext)
+  const { authenticated, handleLogin } = useContext(AuthContext)
   const [error, setError] = useState("");
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -34,6 +34,12 @@ export default function Login() {
     }
   };
 
+  useEffect(() => {
+    if(authenticated) {
+      history.push("/")
+    }
+  }, [authenticated]);
+
   return (
     <Container
       className="d-flex align-items-center justify-content-center min-vw-100 min-vh-100 background"
@@ -54,7 +60,7 @@ export default function Login() {
                 </Form.Group>
                 <Form.Group id="password">
                   <Form.Label>Senha</Form.Label>
-                  <Form.Control type="password" className="form-control" ref={passwordRef} required />
+                  <Form.Control type="password" autoComplete="on" ref={passwordRef} required />
                 </Form.Group>
                 <Button className="w-100" type="submit">
                   Entrar

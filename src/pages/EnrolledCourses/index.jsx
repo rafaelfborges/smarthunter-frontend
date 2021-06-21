@@ -1,26 +1,33 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Button, Card, CardDeck, Col, Container, Row} from "react-bootstrap";
+
+import {AuthContext} from "../../contexts/AuthContext";
 
 import {findUserById} from "../../services/UserService";
 import {findCourseById} from "../../services/CourseService";
+import Loading from "../../components/Loading";
 
 export default function EnrolledCourses() {
+  const {logguedUser} = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
   const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const {enrolledCourses} = await findUserById(1);
+      const {enrolledCourses} = await findUserById(logguedUser.id);
 
       const courses = await Promise.all(enrolledCourses.map(async ({course}) => {
         return await findCourseById(course.id);
       }));
 
       setEnrolledCourses(courses);
-      //setLoading(false);
+      setLoading(false);
     })()
-  }, []);
+  }, [logguedUser]);
 
-  return (
+  return loading ? (
+    <Loading onlySpinner={true} />
+  ) : (
     <Container className="mt-2 mb-2">
       <Row>
         {enrolledCourses.map((course) => (

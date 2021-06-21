@@ -7,11 +7,10 @@ import {findAllCourses} from "../../services/CourseService";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setLoading(true)
       const {content: courses} = await findAllCourses();
       setCourses(courses);
       setLoading(false);
@@ -19,7 +18,7 @@ export default function Courses() {
   }, []);
   
   return loading ? (
-    <Loading />
+    <Loading onlySpinner={true} />
   ) : (
     <Container className="mt-2 mb-2">
       <Row>
