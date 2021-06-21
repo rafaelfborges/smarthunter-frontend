@@ -16,7 +16,7 @@ export default function Routes() {
       <Router history={history}>
         <Switch>
           <PrivateRoute path="/" component={Courses} exact/>
-          <PrivateRoute path="/enrolled_courses" component={EnrolledCourses} exact/>
+          <PrivateRoute path="/my-courses" component={EnrolledCourses} exact/>
           <Route path="/login" component={Login} exact/>
           <Route path="/signup" component={Signup} exact/>
           <Route path="*" component={PageNotFound}/>
