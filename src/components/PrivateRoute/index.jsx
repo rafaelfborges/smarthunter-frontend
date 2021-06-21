@@ -3,12 +3,15 @@ import {Redirect, Route} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext";
 
 import NavBar from "../NavBar";
+import Loading from "../Loading";
 
 
 export default function PrivateRoute({component: Component, ...rest}) {
-  const { authenticated } = useContext(AuthContext);
+  const { loading, authenticated } = useContext(AuthContext);
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <Route
       {...rest}
       render={(props) => {
