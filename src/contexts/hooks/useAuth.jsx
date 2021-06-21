@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import jwtDecode from "jwt-decode";
 
-import api from '../../services/api';
+import api from '../../api';
 import history from '../../history';
 
 export default function useAuth() {

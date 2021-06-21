@@ -32,3 +32,17 @@ code {
   min-width: 380px !important;
 }
 
+.card-course {
+  cursor: pointer;
+  min-width: 18rem;
+  max-width: 27rem;
+}
+
+.card-image {
+  min-height: 12rem;
+  max-height: 12rem;
+}
+
+.list-course {
+  cursor: pointer;
+}

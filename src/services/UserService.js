@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "../api";
 
 const findAllUsers = async () => {
   const {data: response} = await api.get("users");
