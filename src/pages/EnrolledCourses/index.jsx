@@ -6,6 +6,7 @@ import {AuthContext} from "../../contexts/AuthContext";
 import {findUserById} from "../../services/UserService";
 import {findCourseById} from "../../services/CourseService";
 import Loading from "../../components/Loading";
+import {Link} from "react-router-dom";
 
 export default function EnrolledCourses() {
   const {logguedUser} = useContext(AuthContext);
@@ -38,7 +39,7 @@ export default function EnrolledCourses() {
                 <Card.Body>
                   <Card.Title>{course.name}</Card.Title>
                   <Card.Text>{course.description}</Card.Text>
-                  <Button variant="primary">Assistir</Button>
+                  <Button as={Link} to={`/course/${course.id}`} variant="success">Assistir</Button>
                 </Card.Body>
               </Card>
             </CardDeck>
