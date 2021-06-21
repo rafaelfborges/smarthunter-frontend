@@ -30,6 +30,7 @@ export default function Courses() {
     }
     const data = await createEnrolledCourse(request);
     alert("Você foi matriculado com sucesso!")
+    console.log(data)
     history.push("/my-courses")
   }
   
